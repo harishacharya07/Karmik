@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "440422839511",
+    "project_id": "karmik-cb025",
+    "storage_bucket": "karmik-cb025.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:440422839511:android:9df5118ffb8b23a30a2c92",
+        "android_client_info": {
+          "package_name": "com.ttwcalc.karmik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "440422839511-kg69kqip57eetd16q8trhdjr946egria.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAMsYv4jvaQa0kSOzep6HLDd2GDflQJUA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "440422839511-kg69kqip57eetd16q8trhdjr946egria.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
