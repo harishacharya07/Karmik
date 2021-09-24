@@ -1,6 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+
+import '../widgets/machinery_category_widget.dart';
 import 'package:provider/provider.dart';
 import 'dart:convert';
 import '../providers/machinery.dart';
@@ -48,7 +52,17 @@ class _MachineryScreenState extends State<MachineryScreen> {
     final machinery = Provider.of<Machinery>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Name'),
+        backgroundColor: Colors.white,
+        title: Text(
+          'Machinery',
+          style: GoogleFonts.roboto(
+            color: Color(
+              0xff003366,
+            ),
+            fontWeight: FontWeight.bold,
+            letterSpacing: 1,
+          ),
+        ),
       ),
       // body: Center(
       //   child: ElevatedButton(
@@ -56,6 +70,7 @@ class _MachineryScreenState extends State<MachineryScreen> {
       //     child: null,
       //   ),
       // ),
+      //body: MachineryCategoryWidget(imageUrl: machinery.items[2].imageUrl),
       body: _isLoading
           ? Center(
               child: SpinKitWave(
@@ -64,17 +79,8 @@ class _MachineryScreenState extends State<MachineryScreen> {
                 ),
               ),
             )
-          : ListView.builder(
-              itemCount: machinery.items.length,
-              itemBuilder: (context, index) => Column(
-                children: [
-                  MachineryWidget(
-                    id: machinery.items[index].id,
-                    imageUrl: machinery.items[index].imageUrl,
-                    title: machinery.items[index].title,
-                  ),
-                ],
-              ),
+          : MachineryCategoryWidget(
+              imageUrl: machinery.items[2].imageUrl,
             ),
     );
   }
