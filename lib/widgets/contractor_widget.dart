@@ -1,14 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:karmik/screens/category/plastering.dart';
 
-import '../login/login_google_screen.dart';
+import 'package:karmik/screens/contractors/carpenter_screen.dart';
+import 'package:karmik/screens/contractors/electrification_screen.dart';
+import 'package:karmik/screens/contractors/flooring_screen.dart';
+import 'package:karmik/screens/contractors/mason_screen.dart';
+import 'package:karmik/screens/contractors/plastering_screen.dart';
+import 'package:karmik/screens/contractors/plumbing_screen.dart';
+import 'package:karmik/screens/contractors/truss_work_screen.dart';
 import '../screens/engineer_category_screen.dart';
 
 class ContractorWidget extends StatelessWidget {
-  const ContractorWidget({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -46,8 +49,7 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
@@ -59,7 +61,10 @@ class ContractorWidget extends StatelessWidget {
                             color: Color(0xfff1f3f6),
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.egg,
+                                FontAwesomeIcons.fileContract,
+                                color: Color(
+                                  0xff003366,
+                                ),
                               ),
                             ),
                           ),
@@ -71,19 +76,22 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed(PlasteringCategoryScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(PlasteringScreen.routeName);
                           },
                           child: Card(
                             color: Color(0xfff1f3f6),
                             elevation: 0,
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.user,
+                                FontAwesomeIcons.planeSlash,
+                                color: Color(
+                                  0xff003366,
+                                ),
                               ),
                             ),
                           ),
@@ -101,20 +109,19 @@ class ContractorWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed(
-                                LoginWithGoogleScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(FlooringScreen.routeName);
                           },
                           child: Card(
                             elevation: 0,
                             color: Color(0xfff1f3f6),
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.tenge,
+                                FontAwesomeIcons.paintRoller,
                                 color: Color(
                                   0xff003366,
                                 ),
@@ -133,8 +140,7 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: Card(
                           color: Color(
@@ -142,7 +148,10 @@ class ContractorWidget extends StatelessWidget {
                           ),
                           child: Center(
                             child: FaIcon(
-                              FontAwesomeIcons.surprise,
+                              FontAwesomeIcons.stackOverflow,
+                              color: Color(
+                                0xff003366,
+                              ),
                             ),
                           ),
                         ),
@@ -163,20 +172,20 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed(
-                              EngineerCategoryScreen.routeName,
+                              ElectrificationScreen.routeName,
                             );
                           },
                           child: Card(
                             color: Color(0xfff1f3f6),
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.egg,
+                                FontAwesomeIcons.lightbulb,
+                                color: Color(0xff003366),
                               ),
                             ),
                           ),
@@ -188,15 +197,21 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
-                        child: Card(
-                          color: Color(0xfff1f3f6),
-                          elevation: 0,
-                          child: Center(
-                            child: FaIcon(
-                              FontAwesomeIcons.user,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(PlumbingScreen.routeName);
+                          },
+                          child: Card(
+                            color: Color(0xfff1f3f6),
+                            elevation: 0,
+                            child: Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.piedPiper,
+                                color: Color(0xff003366),
+                              ),
                             ),
                           ),
                         ),
@@ -213,20 +228,19 @@ class ContractorWidget extends StatelessWidget {
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed(
-                                LoginWithGoogleScreen.routeName);
+                            Navigator.of(context)
+                                .pushNamed(CarpenterScreen.routeName);
                           },
                           child: Card(
                             elevation: 0,
                             color: Color(0xfff1f3f6),
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.tenge,
+                                FontAwesomeIcons.sourcetree,
                                 color: Color(
                                   0xff003366,
                                 ),
@@ -245,16 +259,24 @@ class ContractorWidget extends StatelessWidget {
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
-                        child: Card(
-                          color: Color(
-                            0xfff1f3f6,
-                          ),
-                          child: Center(
-                            child: FaIcon(
-                              FontAwesomeIcons.surprise,
+                        child: InkWell(
+                          onTap: () {
+                            Navigator.of(context)
+                                .pushNamed(MasonScreen.routeName);
+                          },
+                          child: Card(
+                            color: Color(
+                              0xfff1f3f6,
+                            ),
+                            child: Center(
+                              child: FaIcon(
+                                FontAwesomeIcons.contao,
+                                color: Color(
+                                  0xff003366,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -268,27 +290,31 @@ class ContractorWidget extends StatelessWidget {
             Container(
               height: MediaQuery.of(context).size.height * 0.14,
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(left: 10,),
+              margin: EdgeInsets.only(
+                left: 10,
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Column(
                     children: [
                       SizedBox(
-                        height:
-                        MediaQuery.of(context).size.height * 0.1,
+                        height: MediaQuery.of(context).size.height * 0.1,
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed(
-                              EngineerCategoryScreen.routeName,
+                              TrussWorkScreen.routeName,
                             );
                           },
                           child: Card(
                             color: Color(0xfff1f3f6),
                             child: Center(
                               child: FaIcon(
-                                FontAwesomeIcons.egg,
+                                FontAwesomeIcons.octopusDeploy,
+                                color: Color(
+                                  0xff003366,
+                                ),
                               ),
                             ),
                           ),

@@ -3,15 +3,32 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:karmik/screens/category/plastering.dart';
-import 'package:karmik/screens/engineer_category_screen.dart';
+import 'package:karmik/providers/labour.dart';
+import 'package:karmik/screens/contractors/carpenter_screen.dart';
+import 'package:karmik/screens/contractors/electrification_screen.dart';
+import 'package:karmik/screens/contractors/flooring_screen.dart';
+import 'package:karmik/screens/contractors/mason_screen.dart';
+import 'package:karmik/screens/contractors/painter_screen.dart';
+import 'package:karmik/screens/contractors/plastering_screen.dart';
+import 'package:karmik/screens/contractors/plumbing_screen.dart';
+import 'package:karmik/screens/contractors/truss_work_screen.dart';
+import 'package:karmik/screens/machinery/backhoe_screen.dart';
+import 'package:karmik/screens/machinery/bulldozers_screen.dart';
+import 'package:karmik/screens/machinery/concrete_mixer.dart';
+import 'package:karmik/screens/machinery/cranes_screen.dart';
+import 'package:karmik/screens/machinery/dragline_screen.dart';
+import 'package:karmik/screens/machinery/dumpper.dart';
+import 'package:karmik/screens/machinery/graders_screen.dart';
+import 'package:karmik/screens/machinery/loaders_screen.dart';
 import 'package:provider/provider.dart';
 
+import '../screens/category/plastering.dart';
+import '../screens/engineer_category_screen.dart';
+import '../screens/machinery/excavator_screen.dart';
 import '../screens/spalsh_screen.dart';
 import '../screens/bottom_navigation_screen.dart';
 import '../screens/home_screen.dart';
 import 'login/login_google_screen.dart';
-
 import './providers/machinery.dart';
 
 Future<void> main() async {
@@ -34,6 +51,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (context) => Machinery(),
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Labours(),
         ),
       ],
       child: MaterialApp(
@@ -63,6 +83,24 @@ class MyApp extends StatelessWidget {
               EngineerCategoryScreen(),
           PlasteringCategoryScreen.routeName: (context) =>
               PlasteringCategoryScreen(),
+          ExcavatorScreen.routeName: (context) => ExcavatorScreen(),
+          BackHoeScreen.routeName: (context) => BackHoeScreen(),
+          DragLineScreen.routeName: (context) => DragLineScreen(),
+          BulldozerScreen.routeName: (context) => BulldozerScreen(),
+          GradersScreen.routeName: (context) => GradersScreen(),
+          DumperScreen.routeName: (context) => DumperScreen(),
+          LoaderScreen.routeName: (context) => LoaderScreen(),
+          CranesScreen.routeName: (context) => CranesScreen(),
+          ConcreteMixerScreen.routeName: (context) => ConcreteMixerScreen(),
+          CarpenterScreen.routeName: (context) => CarpenterScreen(),
+          ExcavatorScreen.routeName: (context) => ExcavatorScreen(),
+          FlooringScreen.routeName: (context) => FlooringScreen(),
+          MasonScreen.routeName: (context) => MasonScreen(),
+          PainterScreen.routeName: (context) => PainterScreen(),
+          PlasteringScreen.routeName: (context) => PlasteringScreen(),
+          TrussWorkScreen.routeName: (context) => TrussWorkScreen(),
+          ElectrificationScreen.routeName: (context) => ElectrificationScreen(),
+          PlumbingScreen.routeName: (context) => PlumbingScreen(),
         },
       ),
     ));

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
+import 'package:karmik/widgets/loading_widget.dart';
 
 import '../widgets/machinery_category_widget.dart';
 import 'package:provider/provider.dart';
@@ -72,13 +73,7 @@ class _MachineryScreenState extends State<MachineryScreen> {
       // ),
       //body: MachineryCategoryWidget(imageUrl: machinery.items[2].imageUrl),
       body: _isLoading
-          ? Center(
-              child: SpinKitWave(
-                color: Color(
-                  0xff003366,
-                ),
-              ),
-            )
+          ? LoadingWidget()
           : MachineryCategoryWidget(
               imageUrl: machinery.items[2].imageUrl,
             ),

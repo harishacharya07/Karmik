@@ -1,5 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:karmik/screens/machinery/backhoe_screen.dart';
+import 'package:karmik/screens/machinery/bulldozers_screen.dart';
+import 'package:karmik/screens/machinery/cranes_screen.dart';
+import 'package:karmik/screens/machinery/dragline_screen.dart';
+import 'package:karmik/screens/machinery/dumpper.dart';
+import 'package:karmik/screens/machinery/excavator_screen.dart';
+import 'package:karmik/screens/machinery/graders_screen.dart';
+import 'package:karmik/screens/machinery/loaders_screen.dart';
 
 class MachineryCategoryWidget extends StatelessWidget {
   final String imageUrl;
@@ -13,7 +21,9 @@ class MachineryCategoryWidget extends StatelessWidget {
       crossAxisCount: 2,
       children: [
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(ExcavatorScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -47,7 +57,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(BackHoeScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -81,7 +93,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(DragLineScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -116,7 +130,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(BulldozerScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -150,7 +166,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(GradersScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -184,7 +202,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(DumperScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -218,7 +238,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(LoaderScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -252,7 +274,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(CranesScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
@@ -286,7 +310,9 @@ class MachineryCategoryWidget extends StatelessWidget {
           ),
         ),
         InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(CranesScreen.routeName);
+          },
           child: Container(
             padding: EdgeInsets.all(5),
             child: Card(
