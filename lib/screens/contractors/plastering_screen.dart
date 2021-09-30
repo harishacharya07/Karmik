@@ -57,7 +57,7 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
                 return Column(
                   children: [
                     MachineryWidget(
-                      id: labour.labours[index].imageUrl,
+                      id: labour.labours[index].id,
                       imageUrl: labour.labours[index].imageUrl,
                       title: labour.labours[index].name,
                     ),

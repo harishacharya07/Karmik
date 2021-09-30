@@ -56,6 +56,9 @@ class ProfileScreen extends StatelessWidget {
                     ListTile(
                       leading: Icon(Icons.logout,),
                       title: Text('Log Out'),
+                      onTap: () {
+                        FirebaseAuth.instance.signOut();
+                      },
                     ),
                   ],
                 ),

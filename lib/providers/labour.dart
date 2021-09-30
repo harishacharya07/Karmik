@@ -14,10 +14,15 @@ class Labours with ChangeNotifier {
     return [..._labours];
   }
 
+  Labour findById(String id) {
+    return _labours.firstWhere(
+      (element) => element.id == id,
+    );
+  }
 
   Future<void> fetch() async {
     var url = Uri.parse(
-        'https://shop-app-5cc61-default-rtdb.firebaseio.com/products.json');
+        'https://karmik-cb025-default-rtdb.firebaseio.com/geotechnical.json');
     final response = await http.get(url);
     final List<Labour> loadedProduct = [];
 
@@ -26,11 +31,11 @@ class Labours with ChangeNotifier {
       (productId, productValue) {
         loadedProduct.add(
           Labour(
-            name: productValue['title'],
+            name: productValue['name'],
             imageUrl: productValue['imageUrl'],
-            location: productValue['imageUrl'],
+            location: productValue['place'],
             id: productId,
-            experience: productValue['imageUrl'],
+            experience: productValue['taluk'],
           ),
         );
       },

@@ -12,6 +12,9 @@ import 'package:karmik/screens/contractors/painter_screen.dart';
 import 'package:karmik/screens/contractors/plastering_screen.dart';
 import 'package:karmik/screens/contractors/plumbing_screen.dart';
 import 'package:karmik/screens/contractors/truss_work_screen.dart';
+import 'package:karmik/screens/details_screen.dart';
+import 'package:karmik/screens/join/join_now_screen.dart';
+import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 import 'package:karmik/screens/machinery/backhoe_screen.dart';
 import 'package:karmik/screens/machinery/bulldozers_screen.dart';
 import 'package:karmik/screens/machinery/concrete_mixer.dart';
@@ -69,7 +72,7 @@ class MyApp extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, userStatus) {
             if (userStatus.connectionState == ConnectionState.waiting) {
-              return SplashScreen();
+              return CircularProgressIndicator();
             } else if (userStatus.hasData) {
               return BottomNavigationScreen();
             } else {
@@ -101,6 +104,9 @@ class MyApp extends StatelessWidget {
           TrussWorkScreen.routeName: (context) => TrussWorkScreen(),
           ElectrificationScreen.routeName: (context) => ElectrificationScreen(),
           PlumbingScreen.routeName: (context) => PlumbingScreen(),
+          JoinNowScreen.routeName: (context) => JoinNowScreen(),
+          ProfessionalDetailsScreen.routeName: (context) => ProfessionalDetailsScreen(),
+          DetailsScreen.routeName: (context) => DetailsScreen(),
         },
       ),
     ));

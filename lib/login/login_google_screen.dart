@@ -5,6 +5,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:karmik/screens/bottom_navigation_screen.dart';
 import 'package:karmik/screens/home_screen.dart';
+import 'package:karmik/screens/join/join_now_screen.dart';
+import 'package:karmik/screens/join/professionals_deatails_screen.dart';
+import 'package:karmik/screens/join/select_your_role_screen.dart';
 
 class LoginWithGoogleScreen extends StatefulWidget {
   static final routeName = '/login_screen';
@@ -160,8 +163,7 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
                   ),
                 ),
                 onPressed: () {
-                  Navigator.of(context)
-                      .pushNamed(BottomNavigationScreen.routeName);
+                  Navigator.of(context).pushNamed(ProfessionalDetailsScreen.routeName);
                 },
                 child: Text(
                   'Join Now',
