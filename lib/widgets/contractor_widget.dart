@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'package:karmik/screens/contractors/carpenter_screen.dart';
-import 'package:karmik/screens/contractors/electrification_screen.dart';
-import 'package:karmik/screens/contractors/flooring_screen.dart';
-import 'package:karmik/screens/contractors/mason_screen.dart';
-import 'package:karmik/screens/contractors/plastering_screen.dart';
-import 'package:karmik/screens/contractors/plumbing_screen.dart';
-import 'package:karmik/screens/contractors/truss_work_screen.dart';
+import '../screens/contractors/carpenter_screen.dart';
+import '../screens/contractors/electrification_screen.dart';
+import '../screens/contractors/flooring_screen.dart';
+import '../screens/contractors/mason_screen.dart';
+import '../screens/contractors/plastering_screen.dart';
+import '../screens/contractors/plumbing_screen.dart';
+import '../screens/contractors/truss_work_screen.dart';
 import '../screens/engineer_category_screen.dart';
 
 class ContractorWidget extends StatelessWidget {
@@ -80,15 +80,19 @@ class ContractorWidget extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(PlasteringScreen.routeName);
+                            Navigator.of(context).pushNamed(
+                                PlasteringScreen.routeName,
+                                arguments: "geotechnical");
                           },
                           child: Card(
                             color: Color(0xfff1f3f6),
                             elevation: 0,
                             child: Center(
-                              child: FaIcon(
-                                FontAwesomeIcons.planeSlash,
+                              child: Image(
+                                width: 25,
+                                height: 25,
+                                image: NetworkImage(
+                                    'https://cdn-icons-png.flaticon.com/512/1084/1084987.png'),
                                 color: Color(
                                   0xff003366,
                                 ),
@@ -113,8 +117,9 @@ class ContractorWidget extends StatelessWidget {
                         width: MediaQuery.of(context).size.width * 0.2,
                         child: InkWell(
                           onTap: () {
-                            Navigator.of(context)
-                                .pushNamed(FlooringScreen.routeName);
+                            Navigator.of(context).pushNamed(
+                                PlasteringScreen.routeName,
+                                arguments: 'structural');
                           },
                           child: Card(
                             elevation: 0,

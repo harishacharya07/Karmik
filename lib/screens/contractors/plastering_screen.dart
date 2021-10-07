@@ -19,12 +19,13 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
 
   @override
   void didChangeDependencies() {
+    final args = ModalRoute.of(context)!.settings.arguments.toString();
     if (_isInit) {
       setState(() {
         _isLoading = true;
       });
 
-      Provider.of<Labours>(context).fetch().then((value) {
+      Provider.of<Labours>(context).fetch(args).then((value) {
         setState(() {
           _isLoading = false;
         });
@@ -37,6 +38,7 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
   @override
   Widget build(BuildContext context) {
     final labour = Provider.of<Labours>(context);
+
 
     return Scaffold(
       appBar: AppBar(
@@ -60,6 +62,7 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
                       id: labour.labours[index].id,
                       imageUrl: labour.labours[index].imageUrl,
                       title: labour.labours[index].name,
+                      location: labour.labours[index].location,
                     ),
                   ],
                 );

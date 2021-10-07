@@ -59,34 +59,40 @@ class _ProfessionalDetailsScreenState extends State<ProfessionalDetailsScreen> {
     });
   }
 
+  final snackBar = SnackBar(
+    content: Text('Fill all the details'),
+  );
+
   bool _isLoading = false;
 
   _sendData() async {
-
     final dataBaseRef =
         FirebaseDatabase.instance.reference().child(_currentValueSelected);
-
-    var storageImage =
-        FirebaseStorage.instance.ref().child(_selectedImage!.path);
-    var task = storageImage.putFile(_selectedImage!);
-    imageUrl = await storageImage.getDownloadURL();
 
     try {
       setState(() {
         _isLoading = true;
       });
 
-      var storageImage =
-      FirebaseStorage.instance.ref().child(_selectedImage!.path);
-      var task = storageImage.putFile(_selectedImage!);
-      imageUrl = await storageImage.getDownloadURL();
+      if (_name.text.isEmpty ||
+          _place.text.isEmpty ||
+          _mobileNumber.text.isEmpty ||
+          _selectedImage!.path.isEmpty) {
+        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+      } else {
 
-      var response = await dataBaseRef.push().set({
-        'name': _name.text,
-        'imageUrl': imageUrl,
-        'place': _place.text,
-        'mobileNumber': _mobileNumber.text,
-      });
+        var storageImage =
+            FirebaseStorage.instance.ref().child(_selectedImage!.path);
+        var task = storageImage.putFile(_selectedImage!);
+        imageUrl = await storageImage.getDownloadURL();
+
+        var response = await dataBaseRef.push().set({
+          'name': _name.text,
+          'imageUrl': imageUrl,
+          'place': _place.text,
+          'mobileNumber': _mobileNumber.text,
+        });
+      }
     } catch (e) {
       print(e);
     }
@@ -261,7 +267,7 @@ class _ProfessionalDetailsScreenState extends State<ProfessionalDetailsScreen> {
                     ? CircularProgressIndicator()
                     : Text(
                         'Submit',
-                ),
+                      ),
               ),
             ),
           ],

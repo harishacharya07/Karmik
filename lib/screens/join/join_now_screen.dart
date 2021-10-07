@@ -15,14 +15,10 @@ class JoinNowScreen extends StatefulWidget {
 }
 
 class _JoinNowScreenState extends State<JoinNowScreen> {
-  var _dropdownValue = 'name';
-  var _data = ["name", "harish", "usn"];
 
   @override
   Widget build(BuildContext context) {
     TextEditingController _controller = new TextEditingController();
-    final dataBaseRef =
-        FirebaseDatabase.instance.reference().child(_dropdownValue);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -80,7 +76,7 @@ class _JoinNowScreenState extends State<JoinNowScreen> {
                   onPressed: () {
                     Navigator.of(context).pushReplacement(
                       MaterialPageRoute(
-                        builder: (context) => SelectYourRoleScreen(),
+                        builder: (context) => OtpScreen(_controller.text),
                       ),
                     );
                   },

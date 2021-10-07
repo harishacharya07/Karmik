@@ -26,7 +26,7 @@ class _BackHoeScreenState extends State<BackHoeScreen> {
         _isLoading = true;
       });
 
-      Provider.of<Labours>(context).fetch().then((value) {
+      Provider.of<Labours>(context).fetch("Geotechnical").then((value) {
         setState(() {
           _isLoading = false;
         });
@@ -64,6 +64,7 @@ class _BackHoeScreenState extends State<BackHoeScreen> {
                         id: labour.labours[index].id,
                         imageUrl: labour.labours[index].imageUrl,
                         title: labour.labours[index].name,
+                        location: labour.labours[index].location,
                       ),
                     ],
                   );

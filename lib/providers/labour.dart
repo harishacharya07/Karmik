@@ -20,9 +20,9 @@ class Labours with ChangeNotifier {
     );
   }
 
-  Future<void> fetch() async {
+  Future<void> fetch(String cat) async {
     var url = Uri.parse(
-        'https://karmik-cb025-default-rtdb.firebaseio.com/geotechnical.json');
+        'https://karmik-cb025-default-rtdb.firebaseio.com/$cat.json');
     final response = await http.get(url);
     final List<Labour> loadedProduct = [];
 

@@ -8,19 +8,37 @@ class DetailsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final id = ModalRoute.of(context)!.settings.arguments.toString();
+    final id = ModalRoute.of(context)!.settings.arguments as String;
 
     final details = Provider.of<Labours>(context).findById(id);
     return Scaffold(
-      body: Column(
-        children: [
-          Text(details.id),
-          Text(details.imageUrl),
-          Text(details.location),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            floating: true,
+            pinned: true,
+            expandedHeight: 160.0,
+            flexibleSpace: FlexibleSpaceBar(
+              background: Hero(
+                tag: details.id,
+                child: Image(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                    details.imageUrl,
+                  ),
+                ),
+              ),
+            ),
+          ),
+          SliverList(
+            delegate: SliverChildListDelegate(
+              [
+                Text(details.name),
+              ],
+            ),
+          ),
         ],
       ),
     );
-
   }
 }

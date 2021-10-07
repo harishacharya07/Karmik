@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 
 class SelectYourRoleScreen extends StatelessWidget {
+
+  static final routeName = '/select';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
