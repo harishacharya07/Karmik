@@ -21,113 +21,108 @@ class HardWareShopsWidget extends StatelessWidget {
     const url = 'tel:9845280497';
     try {
       await launch(url);
-    } catch(error) {
+    } catch (error) {
       print(" $error");
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Container(
-        width: MediaQuery.of(context).size.width,
-        height: 90,
-        child: Row(
-          children: [
-            Container(
-              width: 60,
-              height: 55,
-              padding: EdgeInsets.only(
-                left: 20,
-              ),
-              decoration: BoxDecoration(
-                color: Colors.grey,
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: NetworkImage(imageUrl),
+    final _mediaQuery = MediaQuery.of(context).size.width;
+    final _mediaQueryHeight = MediaQuery.of(context).size.height;
+
+    return Container(
+      width: double.infinity,
+      height: 100,
+      child: Card(
+        child: Container(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                padding: EdgeInsets.all(5),
+                width: _mediaQuery * 0.28,
+                height: 90,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(5),
+                  child: FadeInImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(imageUrl),
+                    placeholder: AssetImage(
+                      'assets/images/login.png',
+                    ),
+                  ),
                 ),
               ),
-            ),
-            Container(
-              width: 150,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      name,
-                      softWrap: false,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: GoogleFonts.roboto(
-                        fontSize: 17,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+              Expanded(
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: 12,
+                    left: 5,
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 10),
-                    child: Text(
-                      location,
-                      softWrap: true,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 1,
-                      style: GoogleFonts.roboto(color: Colors.grey),
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      left: 10,
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.orange,
-                          size: 15,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: EdgeInsets.only(
+                          left: 0,
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(
-                            left: 5,
-                            top: 1,
+                        child: Text(
+                          name,
+                          softWrap: true,
+                          maxLines: 1,
+                          style: GoogleFonts.poppins(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
                           ),
-                          child: Text('5'),
                         ),
-                      ],
-                    ),
+                      ),
+                      Text(
+                        location,
+                        style: GoogleFonts.poppins(
+                          color: Colors.black45,
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          Icon(
+                            Icons.star,
+                            color: Colors.orange,
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: 10,
+                            ),
+                            child: Text(
+                              noOfStars,
+                              style: GoogleFonts.poppins(
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      )
+                    ],
                   ),
-                ],
-              ),
-            ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.3,
-              child: Padding(
-                padding: EdgeInsets.only(
-                  right: 15,
                 ),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  mainAxisAlignment: MainAxisAlignment.end,
+              ),
+              Expanded(
+                child: Stack(
                   children: [
-                    InkWell(
-                      onTap: _makingPhoneCall,
+                    Positioned(
+                      width: 60,
+                      height: 33,
+                      top: 18,
+                      right: 20,
                       child: Icon(
-                        FontAwesomeIcons.phone,
-                        color: Color(
-                          0xff003366,
-                        ),
+                        Icons.call,
                       ),
                     ),
                   ],
                 ),
               ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -74,37 +74,37 @@ class _HomeScreenState extends State<HomeScreen> {
                 },
               ),
             ),
-            Container(
-              height: MediaQuery.of(context).size.height * 0.22,
-              margin: EdgeInsets.only(
-                left: 10,
-                top: 25,
-                right: 10,
-              ),
-              width: MediaQuery.of(context).size.width,
-              child: Card(
-                elevation: 3,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        left: 15,
-                        top: 10,
-                        bottom: 8,
-                      ),
-                      child: Text(
-                        'Engineer',
-                        style: GoogleFonts.roboto(
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    EngineerCategoryWidget(),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   height: MediaQuery.of(context).size.height * 0.22,
+            //   margin: EdgeInsets.only(
+            //     left: 10,
+            //     top: 25,
+            //     right: 10,
+            //   ),
+            //   width: MediaQuery.of(context).size.width,
+            //   // child: Card(
+              //   elevation: 3,
+              //   child: Column(
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Padding(
+              //         padding: EdgeInsets.only(
+              //           left: 15,
+              //           top: 10,
+              //           bottom: 8,
+              //         ),
+              //         child: Text(
+              //           'Engineer',
+              //           style: GoogleFonts.roboto(
+              //             fontWeight: FontWeight.bold,
+              //           ),
+              //         ),
+              //       ),
+              //       EngineerCategoryWidget(),
+              //     ],
+              //   ),
+              // ),
+           // ),
             ContractorWidget(),
             LabourCategory(),
           ],

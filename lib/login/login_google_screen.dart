@@ -4,11 +4,14 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:karmik/screens/bottom_navigation_screen.dart';
+import 'package:karmik/screens/creator/creator_login.dart';
 import 'package:karmik/screens/home_screen.dart';
 import 'package:karmik/screens/join/join_now_screen.dart';
+import 'package:karmik/screens/join/labour_join_screen.dart';
 import 'package:karmik/screens/join/otp_screen.dart';
 import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 import 'package:karmik/screens/join/select_your_role_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginWithGoogleScreen extends StatefulWidget {
   static final routeName = '/login_screen';
@@ -22,7 +25,7 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
   GoogleSignInAccount? _user;
   bool signInLoading = false;
 
-  Future signIn() async {
+  Future<void> signIn() async {
     final googleUser = await googleSignIn.signIn();
 
     if (googleUser == null) return;
@@ -34,9 +37,18 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
       idToken: googleAuth.idToken,
       accessToken: googleAuth.accessToken,
     );
+    final _prefs = await SharedPreferences.getInstance();
+    _prefs.setString('user', 'client');
 
     await FirebaseAuth.instance.signInWithCredential(credential);
     signInLoading = true;
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (context) {
+          return BottomNavigationScreen();
+        },
+      ),
+    );
   }
 
   @override
@@ -154,8 +166,13 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
                 ),
               ),
               onPressed: () {
-                Navigator.of(context)
-                    .pushNamed(JoinNowScreen.routeName);
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CreatorLogin();
+                    },
+                  ),
+                );
               },
               child: Text(
                 'Join Now',

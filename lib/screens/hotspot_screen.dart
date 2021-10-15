@@ -21,9 +21,30 @@ class _HotSpotScreenState extends State<HotSpotScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: GoogleMap(
+        markers: {
+          Marker(
+            onTap: () {
+              showModalBottomSheet(
+                  context: context,
+                  builder: (context) {
+                    return Container(
+                      height: 200,
+                    );
+                  });
+            },
+            markerId: MarkerId('1'),
+            position: LatLng(
+              37.55,
+              45.20,
+            ),
+          ),
+        },
         initialCameraPosition: CameraPosition(
-          target: _center,
-          zoom: 11,
+          target: LatLng(
+            37.00,
+            45.00,
+          ),
+          zoom: -10,
         ),
         onMapCreated: _onMapCreated,
       ),

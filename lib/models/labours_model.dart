@@ -6,6 +6,9 @@ class Labour {
   String location;
   String experience;
   String id;
+  String price;
+  String mobile;
+  String age;
 
   Labour({
     required this.name,
@@ -13,5 +16,8 @@ class Labour {
     required this.location,
     required this.id,
     required this.experience,
+    required this.price,
+    required this.mobile,
+    required this.age,
   });
 }

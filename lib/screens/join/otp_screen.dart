@@ -20,6 +20,7 @@ class _OtpScreenState extends State<OtpScreen> {
 
   late final AnimationType animationType;
   TextEditingController textEditingController = TextEditingController();
+  final auth = FirebaseAuth.instance;
 
   bool hasError = false;
   String currentText = "";
@@ -30,8 +31,17 @@ class _OtpScreenState extends State<OtpScreen> {
     await FirebaseAuth.instance.verifyPhoneNumber(
       phoneNumber: '+91$number',
       verificationCompleted: (PhoneAuthCredential credential) async {
-        await FirebaseAuth.instance.signInWithCredential(credential);
-        Navigator.of(context).pushNamed(SelectYourRoleScreen.routeName);
+        await FirebaseAuth.instance.signInWithCredential(credential).then(
+              (value) async => {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CreatorDashScreen();
+                    },
+                  ),
+                ),
+              },
+            );
       },
       verificationFailed: (FirebaseAuthException e) {
         print(e.message);
@@ -47,7 +57,7 @@ class _OtpScreenState extends State<OtpScreen> {
         });
       },
       timeout: Duration(
-        seconds: 600,
+        seconds: 60,
       ),
     );
   }
@@ -79,7 +89,7 @@ class _OtpScreenState extends State<OtpScreen> {
                 activeFillColor: Colors.white,
               ),
               animationDuration: Duration(milliseconds: 300),
-              backgroundColor: Colors.blue.shade50,
+              backgroundColor: Colors.white,
               enableActiveFill: true,
               controller: textEditingController,
               onCompleted: (v) async {
@@ -105,24 +115,24 @@ class _OtpScreenState extends State<OtpScreen> {
           ),
           ElevatedButton(
             onPressed: () async {
-              FirebaseAuth.instance
-                  .signInWithCredential(
-                PhoneAuthProvider.credential(
-                  verificationId: _verificationCode,
-                  smsCode: textEditingController.text,
-                ),
-              )
-                  .then(
-                (value) {
-                  SharedPreferences prefs = _prefs as SharedPreferences;
-                  prefs.setInt('User', 1);
-                  Navigator.of(context).push(
-                    MaterialPageRoute(
-                      builder: (context) => CreatorDashScreen(),
-                    ),
-                  );
-                },
-              );
+              final code = textEditingController.text.trim();
+              AuthCredential credential = PhoneAuthProvider.credential(
+                  verificationId: _verificationCode, smsCode: code);
+
+              final result = await auth.signInWithCredential(credential);
+              final user = result.user;
+
+              if (user != null) {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) {
+                      return CreatorDashScreen();
+                    },
+                  ),
+                );
+              } else {
+                print("Error");
+              }
             },
             child: Text('Name'),
           ),

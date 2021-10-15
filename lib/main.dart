@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
+import 'package:karmik/providers/comment.dart';
 import 'package:karmik/providers/labour.dart';
 import 'package:karmik/screens/contractors/carpenter_screen.dart';
 import 'package:karmik/screens/contractors/electrification_screen.dart';
@@ -17,6 +18,7 @@ import 'package:karmik/screens/join/join_now_screen.dart';
 import 'package:karmik/screens/join/otp_screen.dart';
 import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 import 'package:karmik/screens/join/select_your_role_screen.dart';
+import 'package:karmik/screens/labours/migrant_labour_screen.dart';
 import 'package:karmik/screens/machinery/backhoe_screen.dart';
 import 'package:karmik/screens/machinery/bulldozers_screen.dart';
 import 'package:karmik/screens/machinery/concrete_mixer.dart';
@@ -60,6 +62,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => Labours(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => CommentProvider(),
+        ),
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -70,6 +75,7 @@ class MyApp extends StatelessWidget {
             color: Color(0xff003366),
           ),
         ),
+        home: SplashScreen(),
         // home: StreamBuilder(
         //   stream: FirebaseAuth.instance.authStateChanges(),
         //   builder: (context, userStatus) {
@@ -82,7 +88,6 @@ class MyApp extends StatelessWidget {
         //     }
         //   },
         // ),
-        home: SplashScreen(),
         routes: {
           LoginWithGoogleScreen.routeName: (context) => LoginWithGoogleScreen(),
           EngineerCategoryScreen.routeName: (context) =>
@@ -107,9 +112,11 @@ class MyApp extends StatelessWidget {
           ElectrificationScreen.routeName: (context) => ElectrificationScreen(),
           PlumbingScreen.routeName: (context) => PlumbingScreen(),
           JoinNowScreen.routeName: (context) => JoinNowScreen(),
-          ProfessionalDetailsScreen.routeName: (context) => ProfessionalDetailsScreen(),
+          ProfessionalDetailsScreen.routeName: (context) =>
+              ProfessionalDetailsScreen(),
           DetailsScreen.routeName: (context) => DetailsScreen(),
           SelectYourRoleScreen.routeName: (context) => SelectYourRoleScreen(),
+          MigrantLabourScreen.routeName: (context) => MigrantLabourScreen(),
         },
       ),
     ));

@@ -3,8 +3,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileScreen extends StatelessWidget {
+
+  Future<void> _logOut(BuildContext context) async {
+    final _prefs = await SharedPreferences.getInstance();
+    _prefs.remove('user');
+    FirebaseAuth.instance.signOut();
+    Navigator.of(context).pop();
+
+  }
+
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser!;
@@ -57,7 +67,7 @@ class ProfileScreen extends StatelessWidget {
                       leading: Icon(Icons.logout,),
                       title: Text('Log Out'),
                       onTap: () {
-                        FirebaseAuth.instance.signOut();
+                        _logOut(context);
                       },
                     ),
                   ],

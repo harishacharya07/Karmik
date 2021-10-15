@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:karmik/screens/labours/migrant_labour_screen.dart';
 
 import '../login/login_google_screen.dart';
 import '../screens/engineer_category_screen.dart';
@@ -51,7 +52,7 @@ class LabourCategory extends StatelessWidget {
                         child: InkWell(
                           onTap: () {
                             Navigator.of(context).pushNamed(
-                              EngineerCategoryScreen.routeName,
+                              MigrantLabourScreen.routeName,
                             );
                           },
                           child: Card(

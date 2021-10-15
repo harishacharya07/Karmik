@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:karmik/screens/join/labour_join_screen.dart';
 import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 
 class SelectYourRoleScreen extends StatelessWidget {
-
   static final routeName = '/select';
 
   @override
@@ -31,7 +31,9 @@ class SelectYourRoleScreen extends StatelessWidget {
                   height: MediaQuery.of(context).size.height * 0.18,
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).pushNamed(ProfessionalDetailsScreen.routeName);
+                      Navigator.of(context).pushNamed(
+                        ProfessionalDetailsScreen.routeName,
+                      );
                     },
                     child: Card(
                       elevation: 1,
@@ -55,7 +57,17 @@ class SelectYourRoleScreen extends StatelessWidget {
               Container(
                 width: MediaQuery.of(context).size.width * 0.38,
                 height: MediaQuery.of(context).size.height * 0.18,
-                child: Card(),
+                child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).pushReplacement(
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return LabourJoinScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: Card()),
               ),
               Text(
                 'Contractors',

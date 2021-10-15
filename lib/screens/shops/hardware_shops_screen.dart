@@ -50,10 +50,11 @@ class _HardWareShopScreenState extends State<HardWareShopScreen> {
                 return Column(
                   children: [
                     HardWareShopsWidget(
-                        name: machinery.items[index].title,
-                        location: machinery.items[index].id,
-                        imageUrl: machinery.items[index].imageUrl,
-                        noOfStars: machinery.items[index].title),
+                      name: machinery.items[index].title,
+                      location: machinery.items[index].location,
+                      imageUrl: machinery.items[index].imageUrl,
+                      noOfStars: machinery.items[index].star,
+                    ),
                   ],
                 );
               },
