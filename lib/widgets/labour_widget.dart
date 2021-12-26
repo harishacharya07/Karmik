@@ -6,24 +6,24 @@ import 'package:karmik/screens/details_screen.dart';
 class LabourWidget extends StatelessWidget {
   final String id;
   final String name;
-  final String age;
-  final String experience;
-  final String gender;
-  final String price;
-  final String location;
-  final String mobileNumber;
-  final String imageUrl;
+  // final String age;
+  // final String experience;
+  // final String gender;
+  // final String price;
+  // final String location;
+  // final String mobileNumber;
+  // final String imageUrl;
 
   LabourWidget({
     required this.id,
     required this.name,
-    required this.age,
-    required this.experience,
-    required this.location,
-    required this.imageUrl,
-    required this.mobileNumber,
-    required this.price,
-    required this.gender,
+    // required this.age,
+    // required this.experience,
+    // required this.location,
+    // required this.imageUrl,
+    // required this.mobileNumber,
+    // required this.price,
+    // required this.gender,
   });
 
   @override
@@ -55,13 +55,13 @@ class LabourWidget extends StatelessWidget {
                     tag: id,
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(5),
-                      child: FadeInImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(imageUrl),
-                        placeholder: AssetImage(
-                          'assets/images/login.png',
-                        ),
-                      ),
+                      // child: FadeInImage(
+                      //   fit: BoxFit.cover,
+                      //   image: NetworkImage(imageUrl),
+                      //   placeholder: AssetImage(
+                      //     'assets/images/login.png',
+                      //   ),
+                      // ),
                     ),
                   ),
                 ),
@@ -86,12 +86,12 @@ class LabourWidget extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(
-                          location,
-                          style: GoogleFonts.poppins(
-                            color: Colors.black45,
-                          ),
-                        ),
+                        // Text(
+                        //   location,
+                        //   style: GoogleFonts.poppins(
+                        //     color: Colors.black45,
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

@@ -6,15 +6,15 @@ import 'package:karmik/screens/details_screen.dart';
 
 class MachineryWidget extends StatelessWidget {
   final String title;
-  final String imageUrl;
+  //final String imageUrl;
   final String id;
-  final String location;
+  //final String location;
 
   MachineryWidget({
     required this.id,
-    required this.imageUrl,
+    //required this.imageUrl,
     required this.title,
-    required this.location,
+   // required this.location,
   });
 
   @override
@@ -43,13 +43,13 @@ class MachineryWidget extends StatelessWidget {
                   height: 90,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
-                    child: FadeInImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(imageUrl),
-                      placeholder: AssetImage(
-                        'assets/images/login.png',
-                      ),
-                    ),
+                    // child: FadeInImage(
+                    //   fit: BoxFit.cover,
+                    //   image: NetworkImage(imageUrl),
+                    //   placeholder: AssetImage(
+                    //     'assets/images/login.png',
+                    //   ),
+                    // ),
                   ),
                 ),
                 Expanded(
@@ -74,7 +74,7 @@ class MachineryWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          location,
+                          'location',
                           style: GoogleFonts.poppins(
                             color: Colors.black45,
                           ),

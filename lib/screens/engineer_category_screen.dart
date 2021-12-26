@@ -2,9 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/providers/labour.dart';
-import 'package:karmik/screens/machinery/concrete_mixer.dart';
-import 'package:karmik/screens/machinery/loaders_screen.dart';
-import 'package:karmik/widgets/category_item_widget.dart';
 import 'package:karmik/widgets/loading_widget.dart';
 import 'package:karmik/widgets/machinery_widget.dart';
 import 'package:provider/provider.dart';
@@ -111,9 +108,9 @@ class _EngineerCategoryScreenState extends State<EngineerCategoryScreen> {
                       children: [
                         MachineryWidget(
                           id: _engineer.labours[index].id,
-                          imageUrl: _engineer.labours[index].imageUrl,
+                          //imageUrl: _engineer.labours[index].imageUrl,
                           title: _engineer.labours[index].name,
-                          location: _engineer.labours[index].location,
+                          //location: _engineer.labours[index].location,
                         ),
                       ],
                     );

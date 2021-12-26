@@ -57,7 +57,7 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
   bool _isLoading = false;
 
   Future<void> _sendData() async {
-    final _auth =  FirebaseAuth.instance.currentUser!.uid;
+    final _auth = FirebaseAuth.instance.currentUser!.uid;
     final dataBaseRef =
         FirebaseDatabase.instance.reference().child(_currentValueSelected);
 
@@ -106,7 +106,7 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
   @override
   Widget build(BuildContext context) {
     final dataBaseRef =
-    FirebaseDatabase.instance.reference().child(_currentValueSelected);
+        FirebaseDatabase.instance.reference().child(_currentValueSelected);
 
     return Scaffold(
       body: SingleChildScrollView(

@@ -16,10 +16,11 @@ class PlasteringScreen extends StatefulWidget {
 class _PlasteringScreenState extends State<PlasteringScreen> {
   var _isLoading = false;
   var _isInit = true;
+  var args;
 
   @override
   void didChangeDependencies() {
-    final args = ModalRoute.of(context)!.settings.arguments.toString();
+    args = ModalRoute.of(context)!.settings.arguments.toString();
     if (_isInit) {
       setState(() {
         _isLoading = true;
@@ -43,7 +44,7 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Plastering',
+          args,
           style: GoogleFonts.roboto(
             color: Color(0xff003366),
             fontWeight: FontWeight.bold,
@@ -60,9 +61,9 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
                   children: [
                     MachineryWidget(
                       id: labour.labours[index].id,
-                      imageUrl: labour.labours[index].imageUrl,
+                      //imageUrl: labour.labours[index].imageUrl,
                       title: labour.labours[index].name,
-                      location: labour.labours[index].location,
+                      //location: labour.labours[index].location,
                     ),
                   ],
                 );

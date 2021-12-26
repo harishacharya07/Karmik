@@ -10,7 +10,7 @@ import '../screens/engineer_category_screen.dart';
 import '../widgets/contractor_widget.dart';
 import '../widgets/engineer_catergory_widget.dart';
 import '../widgets/labour_category.dart';
-
+import '../widgets/drop_down_select_widget.dart';
 import '../widgets/app_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -105,8 +105,9 @@ class _HomeScreenState extends State<HomeScreen> {
               //   ),
               // ),
            // ),
-            ContractorWidget(),
-            LabourCategory(),
+           //  ContractorWidget(),
+           //  LabourCategory(),
+            DropDownSelectWidget(),
           ],
         ),
       ),
