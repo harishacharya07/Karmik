@@ -12,16 +12,35 @@ class DropDownSelectWidget extends StatefulWidget {
   _DropDownSelectWidgetState createState() => _DropDownSelectWidgetState();
 }
 
-class _DropDownSelectWidgetState extends State<DropDownSelectWidget> {
-  var _dist = ['Udupi', 'Mangalore'];
-  var _hotSpots = ['City Bus Stand', 'Amabagilu', 'Katapadi'];
+class _DropDownSelectWidgetState extends State<DropDownSelectWidget>
+    with SingleTickerProviderStateMixin {
+  var _dist = ['udupi', 'Mangalore'];
+  var _hotSpots = ['City Busstand', 'Amabagilu', 'Katapadi', ];
   var _types = ['Kooli', 'Mason', 'Helper', 'Centring', 'General'];
-  var _currentValueSelected = 'Udupi';
-  var _currentHotSpotSelected = 'City Bus Stand';
+  var _currentValueSelected = 'udupi';
+  var _currentHotSpotSelected = 'City Busstand';
   var _currentTypeSelected = 'Kooli';
 
   bool _isSelectedDist = true;
   bool _isSelectedHotspot = true;
+  late AnimationController controller;
+
+  @override
+  void initState() {
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(microseconds: 500),
+    );
+    controller.forward().then((value) async {
+      await Future.delayed(
+        Duration(
+          seconds: 5,
+        ),
+      );
+    });
+    controller.reverse();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,6 +54,10 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget> {
               right: 30,
             ),
             child: ListTile(
+              onTap: () => controller.forward().then((value) async {
+                await Future.delayed(Duration(seconds: 1));
+                controller.reverse();
+              }),
               leading: Text(
                 'Search',
                 style: GoogleFonts.roboto(
@@ -42,9 +65,10 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              trailing: Icon(
-                FontAwesomeIcons.search,
+              trailing: AnimatedIcon(
+                icon: AnimatedIcons.search_ellipsis,
                 color: Color(0xff003366),
+                progress: controller,
               ),
             ),
           ),
@@ -146,8 +170,9 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget> {
               onPressed: _isSelectedHotspot
                   ? null
                   : () {
-                      Navigator.of(context)
-                          .pushNamed(PlasteringScreen.routeName, arguments: 'udupi/citybusstand/kooli');
+                      Navigator.of(context).pushNamed(
+                          PlasteringScreen.routeName,
+                          arguments: '$_currentValueSelected/$_currentHotSpotSelected/$_currentTypeSelected');
                     },
               child: Text(
                 'Search',

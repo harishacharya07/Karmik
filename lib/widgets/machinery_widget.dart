@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/screens/details_screen.dart';
 
 class MachineryWidget extends StatelessWidget {
   final String title;
-  //final String imageUrl;
+  final String imageUrl;
   final String id;
-  //final String location;
+  final String location;
+  final String wage;
 
   MachineryWidget({
     required this.id,
-    //required this.imageUrl,
+    required this.imageUrl,
     required this.title,
-   // required this.location,
+    required this.location,
+    required this.wage,
   });
 
   @override
@@ -43,13 +45,13 @@ class MachineryWidget extends StatelessWidget {
                   height: 90,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(5),
-                    // child: FadeInImage(
-                    //   fit: BoxFit.cover,
-                    //   image: NetworkImage(imageUrl),
-                    //   placeholder: AssetImage(
-                    //     'assets/images/login.png',
-                    //   ),
-                    // ),
+                    child: FadeInImage(
+                      fit: BoxFit.cover,
+                      image: NetworkImage(imageUrl),
+                      placeholder: AssetImage(
+                        'assets/images/login.png',
+                      ),
+                    ),
                   ),
                 ),
                 Expanded(
@@ -74,7 +76,7 @@ class MachineryWidget extends StatelessWidget {
                           ),
                         ),
                         Text(
-                          'location',
+                          location,
                           style: GoogleFonts.poppins(
                             color: Colors.black45,
                           ),
@@ -104,7 +106,7 @@ class MachineryWidget extends StatelessWidget {
                                   color: Colors.white,
                                 ),
                                 Text(
-                                  '800',
+                                  wage,
                                   style: GoogleFonts.roboto(
                                     color: Colors.white,
                                   ),

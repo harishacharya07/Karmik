@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:karmik/screens/creator/creator_dash_screen.dart';
+import 'package:karmik/screens/join/labour_join_screen.dart';
 import 'package:karmik/screens/join/select_your_role_screen.dart';
 
 class CreatorLogin extends StatefulWidget {
@@ -36,7 +37,7 @@ class _CreatorLoginState extends State<CreatorLogin> {
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
         builder: (context) {
-          return SelectYourRoleScreen();
+          return LabourJoinScreen();
         },
       ),
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/models/labours_model.dart';
 import 'package:karmik/providers/labour.dart';
+import 'package:karmik/widgets/labour_widget.dart';
 import 'package:karmik/widgets/loading_widget.dart';
 import 'package:karmik/widgets/machinery_widget.dart';
 import 'package:provider/provider.dart';
@@ -39,12 +40,10 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
   @override
   Widget build(BuildContext context) {
     final labour = Provider.of<Labours>(context);
-
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          args,
+          'Labors',
           style: GoogleFonts.roboto(
             color: Color(0xff003366),
             fontWeight: FontWeight.bold,
@@ -52,23 +51,36 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
         ),
         backgroundColor: Colors.white,
       ),
-      body: _isLoading
-          ? LoadingWidget()
-          : ListView.builder(
-              itemCount: labour.labours.length,
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    MachineryWidget(
-                      id: labour.labours[index].id,
-                      //imageUrl: labour.labours[index].imageUrl,
-                      title: labour.labours[index].name,
-                      //location: labour.labours[index].location,
-                    ),
-                  ],
-                );
-              },
-            ),
+      body: labour.labours.isEmpty
+          ? Center(
+              child: Text('No Data Available'),
+            )
+          : _isLoading
+              ? LoadingWidget()
+              : ListView.builder(
+                  itemCount: labour.labours.length,
+                  itemBuilder: (context, index) {
+                    return labour.labours.isEmpty
+                        ? Center(
+                            child: Image.asset('assets/images/login.png'),
+                          )
+                        : Column(
+                            children: [
+                              // ListTile(
+                              //   leading: Image.network(labour.labours[index].imageUrl,),
+                              // )
+                              MachineryWidget(
+                                id: labour.labours[index].id,
+                                imageUrl: labour.labours[index].imageUrl,
+                                title: labour.labours[index].name,
+                                location: labour.labours[index].location,
+                                wage: labour.labours[index].price,
+                              ),
+                              // print()
+                            ],
+                          );
+                  },
+                ),
     );
   }
 }

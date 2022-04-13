@@ -12,6 +12,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class LabourJoinScreen extends StatefulWidget {
   const LabourJoinScreen({Key? key}) : super(key: key);
 
+  static final routeName = '/labor_join';
+
   @override
   _LabourJoinScreenState createState() => _LabourJoinScreenState();
 }
@@ -27,11 +29,24 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
   late String imageUrl;
 
   var _type = [
-    'migrant',
-    'local',
+    'City Busstand',
+    'Ambagilu',
+    'Santhekatte',
+    'Bhramavar',
+    'Katapadi'
+  ];
+  var _typeOfWork = [
+    'Kooli',
+    'Mason',
+    'Helper',
+    'Centring',
+    'Grass Cutting',
+    'Coconut Plucker',
+    'Wood Cutting'
   ];
 
-  var _currentValueSelected = 'migrant';
+  var _currentValueSelected = 'Kooli';
+  var _currentPlaceSelected = "City Busstand";
 
   File? _selectedImage;
   final imagePicker = ImagePicker();
@@ -59,8 +74,7 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
   Future<void> _sendData() async {
     final _auth = FirebaseAuth.instance.currentUser!.uid;
     final dataBaseRef =
-        FirebaseDatabase.instance.reference().child(_currentValueSelected);
-
+        FirebaseDatabase.instance.reference().child("udupi");
     try {
       setState(() {
         _isLoading = true;
@@ -79,12 +93,13 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
         var task = storageImage.putFile(_selectedImage!);
         imageUrl = await storageImage.getDownloadURL();
 
-        var response = await dataBaseRef.child(_auth).set({
+        var response = await dataBaseRef.child(_currentPlaceSelected).child(_currentValueSelected).child(_mobileNumber.text).set({
           'name': _name.text,
           'imageUrl': imageUrl.toString(),
-          'place': _place.text,
+          'place': _currentPlaceSelected,
           'mobileNumber': _mobileNumber.text,
           'age': _age.text,
+          'wage': _place.text,
           'experience': _experience.text,
           'type': _currentValueSelected,
         });
@@ -109,24 +124,23 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
         FirebaseDatabase.instance.reference().child(_currentValueSelected);
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 1,
+        title: Text(
+          'Enter Your Details',
+          style: GoogleFonts.roboto(
+            color: Color(
+              0xff003366,
+            ),
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: EdgeInsets.only(
-                top: 50,
-                left: 10,
-              ),
-              child: Text(
-                'Enter Details',
-                style: GoogleFonts.roboto(
-                  color: Colors.black,
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
             Container(
               margin: EdgeInsets.only(
                 left: 10,
@@ -215,9 +229,8 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
                 top: 20,
               ),
               child: DropdownButton(
-                hint: Text('Profession'),
                 isExpanded: true,
-                items: _type.map((String newValue) {
+                items: _typeOfWork.map((String newValue) {
                   return DropdownMenuItem(
                     value: newValue,
                     child: Text(newValue),
@@ -232,6 +245,54 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
               ),
             ),
             Container(
+              width: double.infinity,
+              margin: EdgeInsets.only(
+                left: 10,
+                right: 10,
+                top: 20,
+              ),
+              child: DropdownButton(
+                isExpanded: true,
+                onChanged: (String? value) {
+                  setState(() {
+                    _currentPlaceSelected = value!;
+                  });
+                },
+                items: _type.map((String? newPlace) {
+                  return DropdownMenuItem(
+                    value: newPlace,
+                    child: Text(
+                      newPlace!,
+                    ),
+                  );
+                }).toList(),
+                value: _currentPlaceSelected,
+              ),
+            ),
+            // Container(
+            //   width: double.infinity,
+            //   margin: EdgeInsets.only(
+            //     left: 10,
+            //     right: 10,
+            //     top: 20,
+            //   ),
+            //   child: DropdownButton(
+            //     isExpanded: true,
+            //     items: _type.map((String newPlace) {
+            //       return DropdownMenuItem(
+            //         value: newPlace,
+            //         child: Text(newPlace),
+            //       );
+            //     }).toList(),
+            //     onChanged: (String? newPlaceSelected) {
+            //       setState(() {
+            //         _currentPlaceSelected = newPlaceSelected!;
+            //       });
+            //     },
+            //     value: _currentPlaceSelected,
+            //   ),
+            // ),
+            Container(
               margin: EdgeInsets.only(
                 left: 10,
                 right: 10,
@@ -242,7 +303,7 @@ class _LabourJoinScreenState extends State<LabourJoinScreen> {
                 cursorColor: Colors.grey,
                 decoration: InputDecoration(
                   filled: true,
-                  labelText: 'Place',
+                  labelText: 'Enter wages',
                   labelStyle: TextStyle(color: Colors.grey),
                   border: InputBorder.none,
                   hintStyle: TextStyle(

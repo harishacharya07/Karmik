@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:karmik/screens/join/labour_join_screen.dart';
 
 class AppDrawer extends StatelessWidget {
 
@@ -24,13 +25,15 @@ class AppDrawer extends StatelessWidget {
             title: Text('Home'),
           ),
           ListTile(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).pushNamed(LabourJoinScreen.routeName);
+            },
             selectedTileColor: Color(0xFFACB7C4),
             leading: Icon(
               Icons.account_box_outlined,
             ),
             focusColor: Color(0xff003366),
-            title: Text('About-us'),
+            title: Text('Add'),
           ),
           ListTile(
             onTap: () {},

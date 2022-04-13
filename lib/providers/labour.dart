@@ -33,13 +33,13 @@ class Labours with ChangeNotifier {
         loadedProduct.add(
           Labour(
             name: productValue['name'],
-            //imageUrl: productValue['imageUrl'],
-            //location: productValue['place'],
+            imageUrl: productValue['imageUrl'],
+            location: productValue['place'],
             id: productId,
-            //experience: productValue['experience'],
-            //price: productValue['place'],
-            //mobile: productValue['mobileNumber'],
-           // age: productValue['age'],
+            experience: productValue['experience'],
+            price: productValue['wage'],
+            mobile: productValue['mobileNumber'].toString(),
+            age: productValue['age'].toString(),
           ),
         );
       },

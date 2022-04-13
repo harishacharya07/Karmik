@@ -55,20 +55,25 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        padding: EdgeInsets.only(
+          top: MediaQuery.of(context).size.height * 0.15,
+        ),
         child: Column(
           children: [
-            Padding(
-              padding: EdgeInsets.only(
-                top: MediaQuery.of(context).size.height * 0.25,
-                left: MediaQuery.of(context).size.width * 0.08,
-              ),
+            Image.asset(
+              'assets/images/login.png',
+              width: MediaQuery.of(context).size.width * 0.7,
+            ),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.1,),
+            Align(
+              alignment: Alignment.center,
               child: Text(
                 'Welcome User',
                 style: GoogleFonts.roboto(
                   color: Colors.black,
                   textStyle: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w500,
+                    fontSize: 32,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ),
@@ -80,13 +85,13 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
                 style: GoogleFonts.roboto(
                   color: Colors.grey,
                   textStyle: TextStyle(
-                    fontSize: 16,
+                    fontSize: 18,
                   ),
                 ),
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.15,
+              height: MediaQuery.of(context).size.height * 0.10,
             ),
             ElevatedButton.icon(
               icon: FaIcon(
@@ -110,34 +115,7 @@ class _LoginWithGoogleScreenState extends State<LoginWithGoogleScreen> {
               ),
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            ElevatedButton.icon(
-              icon: FaIcon(
-                FontAwesomeIcons.facebook,
-                color: Colors.white,
-              ),
-              style: ButtonStyle(
-                minimumSize: MaterialStateProperty.resolveWith(
-                  (states) => Size(
-                    MediaQuery.of(context).size.width * 0.9,
-                    60,
-                  ),
-                ),
-                backgroundColor: MaterialStateProperty.resolveWith(
-                  (states) => Colors.blue,
-                ),
-              ),
-              onPressed: () {},
-              label: Text(
-                'Sign in with Facebook',
-                style: TextStyle(
-                  color: Colors.white,
-                ),
-              ),
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             Align(
               child: Text(

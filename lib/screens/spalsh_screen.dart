@@ -35,7 +35,7 @@ class _SplashScreenState extends State<SplashScreen> {
         Navigator.pushReplacement(
           context,
           new MaterialPageRoute(
-            builder: (context) => CreatorDashScreen(),
+            builder: (context) => BottomNavigationScreen(),
           ),
         );
       });

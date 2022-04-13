@@ -62,9 +62,10 @@ class _BackHoeScreenState extends State<BackHoeScreen> {
                     children: [
                       MachineryWidget(
                         id: labour.labours[index].id,
-                        //imageUrl: labour.labours[index].imageUrl,
+                        imageUrl: labour.labours[index].imageUrl,
                         title: labour.labours[index].name,
-                        //location: labour.labours[index].location,
+                        location: labour.labours[index].location,
+                        wage: '100',
                       ),
                     ],
                   );

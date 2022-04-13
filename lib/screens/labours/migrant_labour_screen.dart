@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/providers/labour.dart';
+import 'package:karmik/providers/machinery.dart';
 import 'package:karmik/widgets/labour_widget.dart';
 import 'package:karmik/widgets/loading_widget.dart';
+import 'package:karmik/widgets/machinery_widget.dart';
 import 'package:provider/provider.dart';
 
 class MigrantLabourScreen extends StatefulWidget {
@@ -24,7 +26,7 @@ class _MigrantLabourScreenState extends State<MigrantLabourScreen> {
         _isLoading = true;
       });
 
-      Provider.of<Labours>(context).fetch("geotechnical").then((value) {
+      Provider.of<Labours>(context).fetch(args).then((value) {
         setState(() {
           _isLoading = false;
         });
@@ -56,18 +58,15 @@ class _MigrantLabourScreenState extends State<MigrantLabourScreen> {
           : ListView.builder(
               itemCount: labour.labours.length,
               itemBuilder: (context, index) {
+                print(labour.labours[index].name);
                 return Column(
                   children: [
-                    LabourWidget(
-                      name: labour.labours[index].name,
-                      //age: '25',
-                      // experience: labour.labours[index].experience,
-                      // location: labour.labours[index].location,
-                      // imageUrl: labour.labours[index].imageUrl,
-                      //mobileNumber: '72582222822',
-                      //price: labour.labours[index].name,
-                      //gender: 'male',
-                      id: labour.labours[index].id,
+                    ListTile(
+                      leading: CircleAvatar(
+                        foregroundImage: NetworkImage(
+                          labour.labours[index].imageUrl,
+                        ),
+                      ),
                     ),
                   ],
                 );

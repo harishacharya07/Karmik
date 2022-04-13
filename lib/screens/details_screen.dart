@@ -25,7 +25,11 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   void didChangeDependencies() {
-    final args = ModalRoute.of(context)!.settings.arguments.toString();
+    final args = ModalRoute
+        .of(context)!
+        .settings
+        .arguments
+        .toString();
     if (_isInit) {
       setState(() {
         _isLoading = true;
@@ -43,7 +47,10 @@ class _DetailsScreenState extends State<DetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final id = ModalRoute.of(context)!.settings.arguments as String;
+    final id = ModalRoute
+        .of(context)!
+        .settings
+        .arguments as String;
     final comments = Provider.of<CommentProvider>(context);
 
     final details = Provider.of<Labours>(context).findById(id);
@@ -54,7 +61,18 @@ class _DetailsScreenState extends State<DetailsScreen> {
         .child(details.id)
         .child('comments');
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          details.name,
+          style: GoogleFonts.roboto(
+            fontWeight: FontWeight.bold,
+            color: Color(
+              0xff003366,
+            ),
+          ),
+        ),
+        backgroundColor: Colors.white,
+      ),
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -68,9 +86,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
                 tag: details.id,
                 child: CircleAvatar(
                   radius: 42,
-                  // foregroundImage: NetworkImage(
-                  //   details.imageUrl,
-                  // ),
+                  foregroundImage: NetworkImage(
+                    details.imageUrl,
+                  ),
                 ),
               ),
             ),
@@ -88,9 +106,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
               leading: Icon(
                 Icons.place,
               ),
-              // title: Text(
-              //   details.location,
-              // ),
+              title: Text(
+                details.location,
+              ),
             ),
             Divider(
               thickness: 1,
@@ -104,7 +122,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
             ),
             ListTile(
               leading: Icon(Icons.work),
-              //title: Text(details.experience),
+              title: Text(details.experience),
             ),
             Divider(
               thickness: 1,
@@ -179,28 +197,29 @@ class _DetailsScreenState extends State<DetailsScreen> {
               child: _isLoading
                   ? LoadingWidget()
                   : ListView.builder(
-                      itemCount: comments.comments.length,
-                      itemBuilder: (context, index) {
-                        return Column(
-                          children: [
-                            ListTile(
-                              leading: CircleAvatar(
-                                radius: 18,
-                                foregroundImage: NetworkImage(
-                                  comments.comments[index].imageUrl,
-                                ),
-                              ),
-                              title: Text(
-                                comments.comments[index].comment,
-                              ),
-                            ),
-                            Divider(
-                              thickness: 1,
-                            ),
-                          ],
-                        );
-                      },
-                    ),
+                itemCount: comments.comments.length,
+                itemBuilder: (context, index) {
+                  return comments.comments.isEmpty ? Center(
+                    child: Image.asset('assets/images/login.png'),) : Column(
+                    children: [
+                      ListTile(
+                        leading: CircleAvatar(
+                          radius: 18,
+                          foregroundImage: NetworkImage(
+                            comments.comments[index].imageUrl,
+                          ),
+                        ),
+                        title: Text(
+                          comments.comments[index].comment,
+                        ),
+                      ),
+                      Divider(
+                        thickness: 1,
+                      ),
+                    ],
+                  );
+                },
+              ),
             ),
           ],
         ),

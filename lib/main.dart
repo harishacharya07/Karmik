@@ -15,6 +15,7 @@ import 'package:karmik/screens/contractors/plumbing_screen.dart';
 import 'package:karmik/screens/contractors/truss_work_screen.dart';
 import 'package:karmik/screens/details_screen.dart';
 import 'package:karmik/screens/join/join_now_screen.dart';
+import 'package:karmik/screens/join/labour_join_screen.dart';
 import 'package:karmik/screens/join/otp_screen.dart';
 import 'package:karmik/screens/join/professionals_deatails_screen.dart';
 import 'package:karmik/screens/join/select_your_role_screen.dart';
@@ -70,14 +71,10 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          iconTheme: IconThemeData(
-            color: Color(
-              0xff003366,
+          appBarTheme: AppBarTheme(
+            iconTheme: IconThemeData(
+              color: Color(0xff003366),
             ),
-          ),
-          primarySwatch: Colors.blue,
-          primaryIconTheme: IconThemeData(
-            color: Color(0xff003366),
           ),
         ),
         home: SplashScreen(),
@@ -122,6 +119,7 @@ class MyApp extends StatelessWidget {
           DetailsScreen.routeName: (context) => DetailsScreen(),
           SelectYourRoleScreen.routeName: (context) => SelectYourRoleScreen(),
           MigrantLabourScreen.routeName: (context) => MigrantLabourScreen(),
+          LabourJoinScreen.routeName: (context) => LabourJoinScreen(),
         },
       ),
     ));

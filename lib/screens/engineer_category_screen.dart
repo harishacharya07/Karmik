@@ -108,9 +108,10 @@ class _EngineerCategoryScreenState extends State<EngineerCategoryScreen> {
                       children: [
                         MachineryWidget(
                           id: _engineer.labours[index].id,
-                          //imageUrl: _engineer.labours[index].imageUrl,
+                          imageUrl: _engineer.labours[index].imageUrl,
                           title: _engineer.labours[index].name,
-                          //location: _engineer.labours[index].location,
+                          location: _engineer.labours[index].location,
+                          wage: '100',
                         ),
                       ],
                     );
