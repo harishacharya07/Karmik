@@ -114,13 +114,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
               thickness: 1,
             ),
             ListTile(
-              leading: Icon(Icons.phone),
-              //title: Text(details.mobile),
-            ),
-            Divider(
-              thickness: 1,
-            ),
-            ListTile(
               leading: Icon(Icons.work),
               title: Text(details.experience),
             ),
