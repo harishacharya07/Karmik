@@ -43,7 +43,7 @@ class _PlasteringScreenState extends State<PlasteringScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Labors',
+          args,
           style: GoogleFonts.roboto(
             color: Color(0xff003366),
             fontWeight: FontWeight.bold,

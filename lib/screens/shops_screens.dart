@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tab_indicator_styler/flutter_tab_indicator_styler.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:karmik/widgets/app_drawer.dart';
 
 import '../screens/shops/hardware_shops_screen.dart';
 import '../screens/shops/flooring_shops_screen.dart';
@@ -19,6 +20,7 @@ class _ShopScreenState extends State<ShopScreen> {
     return DefaultTabController(
       length: 5,
       child: Scaffold(
+        drawer: AppDrawer(),
         appBar: AppBar(
           elevation: 5,
           title: Text(

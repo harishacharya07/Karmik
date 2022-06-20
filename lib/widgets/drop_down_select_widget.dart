@@ -15,7 +15,13 @@ class DropDownSelectWidget extends StatefulWidget {
 class _DropDownSelectWidgetState extends State<DropDownSelectWidget>
     with SingleTickerProviderStateMixin {
   var _dist = ['udupi', 'Mangalore'];
-  var _hotSpots = ['City Busstand', 'Amabagilu', 'Katapadi', ];
+  var _hotSpots = [
+    'City Busstand',
+    'Amabagilu',
+    'Katapadi',
+    'Santhekatte',
+    'Bhramavara'
+  ];
   var _types = ['Kooli', 'Mason', 'Helper', 'Centring', 'General'];
   var _currentValueSelected = 'udupi';
   var _currentHotSpotSelected = 'City Busstand';
@@ -31,13 +37,15 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget>
       vsync: this,
       duration: Duration(microseconds: 500),
     );
-    controller.forward().then((value) async {
-      await Future.delayed(
-        Duration(
-          seconds: 5,
-        ),
-      );
-    });
+    controller.forward().then(
+      (value) async {
+        await Future.delayed(
+          Duration(
+            seconds: 5,
+          ),
+        );
+      },
+    );
     controller.reverse();
     super.initState();
   }
@@ -54,10 +62,12 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget>
               right: 30,
             ),
             child: ListTile(
-              onTap: () => controller.forward().then((value) async {
-                await Future.delayed(Duration(seconds: 1));
-                controller.reverse();
-              }),
+              onTap: () => controller.forward().then(
+                (value) async {
+                  await Future.delayed(Duration(seconds: 1));
+                  controller.reverse();
+                },
+              ),
               leading: Text(
                 'Search',
                 style: GoogleFonts.roboto(
@@ -172,7 +182,8 @@ class _DropDownSelectWidgetState extends State<DropDownSelectWidget>
                   : () {
                       Navigator.of(context).pushNamed(
                           PlasteringScreen.routeName,
-                          arguments: '$_currentValueSelected/$_currentHotSpotSelected/$_currentTypeSelected');
+                          arguments:
+                              '$_currentValueSelected/$_currentHotSpotSelected/$_currentTypeSelected');
                     },
               child: Text(
                 'Search',

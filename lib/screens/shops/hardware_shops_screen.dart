@@ -43,23 +43,17 @@ class _HardWareShopScreenState extends State<HardWareShopScreen> {
     final machinery = Provider.of<Machinery>(context);
 
     return Scaffold(
-      body: _isLoading
-          ? LoadingWidget()
-          : ListView.builder(
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    HardWareShopsWidget(
-                      name: machinery.items[index].title,
-                      location: machinery.items[index].location,
-                      imageUrl: machinery.items[index].imageUrl,
-                      noOfStars: machinery.items[index].star,
-                    ),
-                  ],
-                );
-              },
-              itemCount: machinery.items.length,
+      body: Center(
+        child: Container(
+          width: 30,
+          height: 30,
+          child: Image(
+            image: AssetImage(
+              'assets/images/folder.png',
             ),
+          ),
+        ),
+      ),
     );
   }
 }

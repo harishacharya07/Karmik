@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karmik/screens/details_screen.dart';
+import 'package:rating_bar/rating_bar.dart';
 
 class MachineryWidget extends StatelessWidget {
   final String title;
@@ -49,7 +50,7 @@ class MachineryWidget extends StatelessWidget {
                       fit: BoxFit.cover,
                       image: NetworkImage(imageUrl),
                       placeholder: AssetImage(
-                        'assets/images/login.png',
+                        'assets/images/user.png',
                       ),
                     ),
                   ),
@@ -80,6 +81,15 @@ class MachineryWidget extends StatelessWidget {
                           style: GoogleFonts.poppins(
                             color: Colors.black45,
                           ),
+                        ),
+                        RatingBar(
+                          onRatingChanged: (rating) => rating = 3,
+                          initialRating: 3,
+                          isHalfAllowed: false,
+                          filledIcon: Icons.star,
+                          emptyIcon: Icons.star_border,
+                          filledColor: Colors.yellow,
+                          size: 18,
                         ),
                       ],
                     ),

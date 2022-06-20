@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
 import 'package:karmik/providers/comment.dart';
 import 'package:karmik/providers/labour.dart';
+import 'package:karmik/providers/theme.dart';
 import 'package:karmik/screens/contractors/carpenter_screen.dart';
 import 'package:karmik/screens/contractors/electrification_screen.dart';
 import 'package:karmik/screens/contractors/flooring_screen.dart';
@@ -28,6 +29,7 @@ import 'package:karmik/screens/machinery/dragline_screen.dart';
 import 'package:karmik/screens/machinery/dumpper.dart';
 import 'package:karmik/screens/machinery/graders_screen.dart';
 import 'package:karmik/screens/machinery/loaders_screen.dart';
+import 'package:karmik/widgets/enlarged_image_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../screens/category/plastering.dart';
@@ -65,6 +67,11 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => CommentProvider(),
+        ),
+        ChangeNotifierProvider<ThemeChanger>(
+          create: (_) => ThemeChanger(
+            ThemeData.dark(),
+          ),
         ),
       ],
       child: MaterialApp(
@@ -120,6 +127,7 @@ class MyApp extends StatelessWidget {
           SelectYourRoleScreen.routeName: (context) => SelectYourRoleScreen(),
           MigrantLabourScreen.routeName: (context) => MigrantLabourScreen(),
           LabourJoinScreen.routeName: (context) => LabourJoinScreen(),
+          EnlargedImageWidget.routeName: (context) => EnlargedImageWidget(),
         },
       ),
     ));

@@ -6,6 +6,7 @@ import '../screens/hotspot_screen.dart';
 import '../screens/machinery_screens.dart';
 import '../screens/shops_screens.dart';
 import '../screens/home_screen.dart';
+import 'creator/creator_home.dart';
 
 class BottomNavigationScreen extends StatefulWidget {
   const BottomNavigationScreen({Key? key}) : super(key: key);
@@ -21,8 +22,8 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   List<Widget> _pages = [
     HomeScreen(),
     ShopScreen(),
+    CreatorHomeScreen(),
     HotSpotScreen(),
-    MachineryScreen(),
     ProfileScreen(),
   ];
 
@@ -64,15 +65,15 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.map,
+              FontAwesomeIcons.plus,
             ),
-            label: 'HotSpot',
+            label: 'Join',
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
-              FontAwesomeIcons.personBooth,
+              FontAwesomeIcons.map,
             ),
-            label: 'Machinery',
+            label: 'HotSpot',
           ),
           BottomNavigationBarItem(
             icon: FaIcon(
